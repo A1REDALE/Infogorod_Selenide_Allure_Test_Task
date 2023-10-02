@@ -19,7 +19,7 @@ public class MosecomPage {
     private final SelenideElement serovodorodRadioButton = $x("//input[@value='Сероводород']");
     private final SelenideElement answerButton2 = $x("//div[@id='quiz-page-id-1']//button");
     private final SelenideElement reportDate = $x("//input[@id='report-date']");
-    private final SelenideElement date = $x("//a[text()='26']");
+    private final SelenideElement date = $x("//a[text()='2']");
     private final SelenideElement reportTime = $x("//div[text()='Выберите временные отрезки']");
     private final SelenideElement reportTimePeriod = $x("//input[@data-label='06:00 - 12:00']");
     private final SelenideElement answerButton3 = $x("//div[@id='quiz-page-id-2']//button");
@@ -58,15 +58,19 @@ public class MosecomPage {
     @Step("сохраняем все запахи из списка и выводим их в обратном порядке")
     public void getReverseTextSmells() {
         ElementsCollection smells = $$x("//input[@name='smell_type']");
-        List<String> listSmells = new ArrayList<>();
+        List<String>listSmells = new ArrayList<>();
         for (SelenideElement e : smells) {
             listSmells.add(e.getAttribute("value"));
         }
-        for (String smell : listSmells) {
-            StringBuilder sm = new StringBuilder(smell);
+        StringBuilder sm = new StringBuilder();
+        for (int i = 0; i < listSmells.size(); i++ ) {
+            sm.append(listSmells.get(i));
             sm.reverse();
-            AllureHelper.logAllure(sm.toString());
+            listSmells.set(i, sm.toString());
+            sm.delete(0,listSmells.get(i).length());
         }
+            AllureHelper.logAllure(String.valueOf(listSmells));
+
     }
     @Step("кликнуть на кнопку Ответить второго вопроса")
     public void clickAnswerButton2() {
