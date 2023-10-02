@@ -81,7 +81,7 @@ public class MosecomPage {
         reportDate.shouldBe(Condition.visible, Duration.ofSeconds(10))
                 .click();
     }
-    @Step("выбрать дату 26")
+    @Step("выбрать дату 2")
     public void chooseDate() {
         date.shouldBe(Condition.visible, Duration.ofSeconds(10))
                 .click();
