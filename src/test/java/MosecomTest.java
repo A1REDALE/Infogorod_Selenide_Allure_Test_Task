@@ -1,7 +1,6 @@
 import io.qameta.allure.Flaky;
 import org.junit.Test;
 
-
 public class MosecomTest extends BaseTest{
     @Flaky
     @Test

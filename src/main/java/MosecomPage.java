@@ -35,7 +35,6 @@ public class MosecomPage {
         addressSearchField.sendKeys("с");
         AllureHelper.makeScreenshot();
     }
-
     @Step("выбрать адрес в списке")
     public void clickOnAddress(){
         address.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
