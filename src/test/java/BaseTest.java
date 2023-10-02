@@ -5,13 +5,13 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.After;
 import org.junit.Before;
 
-
 public class BaseTest {
 
     @Before
     public void setUp() {
         Configuration.browser = "firefox";
-        SelenideLogger.addListener("AllureSelenide",new AllureSelenide().screenshots(true).includeSelenideSteps(true));
+        SelenideLogger.addListener("AllureSelenide",new AllureSelenide().screenshots(true)
+                .includeSelenideSteps(true));
         Selenide.open("https://mosecom.mos.ru/");
     }
     @After

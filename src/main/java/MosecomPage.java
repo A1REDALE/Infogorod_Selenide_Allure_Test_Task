@@ -1,17 +1,16 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class MosecomPage {
-
 
     private final SelenideElement addressSearchField = $x("//input[@id = 'address-autocomplete']");
     private final SelenideElement address = $x("//div[text()='город Москва, Щибровская улица, дом 7']");
@@ -25,8 +24,6 @@ public class MosecomPage {
     private final SelenideElement answerButton3 = $x("//div[@id='quiz-page-id-2']//button");
     private final SelenideElement reportPeriod = $x("//input[@value='Каждый день']");
     private final SelenideElement answerButton4 = $x("//div[@id='quiz-page-id-3']//button");
-
-
 
     @Step("проскролить страницу до опроса")
     public void scrollPage(){
@@ -49,7 +46,6 @@ public class MosecomPage {
         answerButton1.shouldBe(Condition.visible, Duration.ofSeconds(10))
                 .click();
     }
-
     @Step("выбрать запах Сероводород")
     public void chooseSerovodorodRadioButton() {
         serovodorodRadioButton.click();
@@ -70,7 +66,6 @@ public class MosecomPage {
             sm.delete(0,listSmells.get(i).length());
         }
             AllureHelper.logAllure(String.valueOf(listSmells));
-
     }
     @Step("кликнуть на кнопку Ответить второго вопроса")
     public void clickAnswerButton2() {
@@ -97,7 +92,6 @@ public class MosecomPage {
         reportTimePeriod.click();
         AllureHelper.makeScreenshot();;
     }
-
     @Step("кликнуть на кнопку Ответить третьего вопроса")
     public void clickAnswerButton3() {
         answerButton3.shouldBe(Condition.visible, Duration.ofSeconds(10))
